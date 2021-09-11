@@ -4,44 +4,115 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS starter || Bootstap 5</title>
+  <title>Cinerama</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-  <div class="container-made container-sm py-5">
+    <style>
+      .movie__img {
+        object-fit: cover;
+      }
+    </style>
+  <div class="movies container-xl">
+  <header class="py-3 mb-3">
+    <h1 class="mb-0 display-6 text-center">Movies</h1>
+  </header>
 
-    <h1 class="text-center mb-5">TOPIC</h1>
+  <section>
+    <h2 class="visually-hidden">Movies list</h2>
 
-    <form class="js-form" action="https://echo.htmlacademy.ru" method="GET">
-       <div class="box row">
+    <div class="movies__list row">
+      <p class="text-center">Movies are coming... Please, wait.</p>
+    </div>
+  </section>
+</div>
 
-        <div class="col-lg-4">
-          <input class="js-input form-control col-lg-4 d-block mb-2" type="text" required>
+
+<!-- MODALS -->
+<div class="movie-info-modal modal fade" id="more-info-modal">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row align-items-center mb-3">
+          <div class="col-lg-5">
+            <h3 class="movie-info-modal__title mb-md-0">Movie</h3>
+          </div>
+          <div class="col-lg-7">
+            <div class="d-flex flex-wrap small">
+              <span class="d-flex align-items-center me-3">
+                <img class="me-1" src="img/icon-star.svg" alt="" width="16" height="16">
+                <span class="movie-info-modal__rating">7.7</span>
+              </span>
+              <span class="d-flex align-items-center me-3">
+                <img class="me-1" src="img/icon-calendar-event.svg" alt="" width="16" height="16">
+                <span class="movie-info-modal__year">2001</span>
+              </span>
+              <span class="d-flex align-items-center ">
+                <img class="me-1" src="img/icon-clock.svg" alt="" width="16" height="16">
+                <span class="movie-info-modal__duration">1 hr 20 min</span>
+              </span>
+            </div>
+          </div>
         </div>
 
-         <div class="col-lg-4">
-           <button class="js-submit btn-danger form-control col-lg-4" type="submit">Submit</button>
-         </div>
-
-        <div class="col-lg-4">
-          <output class="output-wrapper form-control col-lg-4 d-block mb-2">
-            <span>Result: </span>
-            <span class="js-output"></span>
-          </output>
+        <div class="row">
+          <div class="col-lg-5 mb-3 mb-lg-0">
+            <div class="ratio ratio-16x9">
+              <iframe class="movie-info-modal__iframe d-block w-100 border-0 rounded"
+                src="https://www.youtube-nocookie.com/embed/j51ae5KM7N0" title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <p class="movie-info-modal__categories">Thriller, Action, Comedy</p>
+            <p class="movie-info-modal__summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil itaque
+              impedit doloribus! Aperiam vero nostrum quaerat quos magnam molestiae hic officia eveniet similique
+              eligendi. Voluptate obcaecati deserunt veritatis porro laboriosam?</p>
+            <div>
+              <a class="movie-info-modal__imdb-link" href="#" target="_blank">Show on IMDb</a>
+            </div>
+          </div>
         </div>
-
-
-
-
-       </div>
-    </form>
-
-
+      </div>
+    </div>
   </div>
+</div>
 
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
+
+<!-- TEMPLATES -->
+<template id="movies-item-template">
+  <div class="movies__item col-sm-6 col-md-4 mb-4">
+    <div class="movie card h-100">
+      <img class="movie__img card-img-top" src="https://picsum.photos/300/170" alt="rasm" width="300" height="170">
+      <div class="card-body d-flex flex-column">
+        <h3 class="movie__title h5 mb-0 card-title">Movie title</h3>
+        <div class="d-flex flex-wrap justify-content-between mb-2 small">
+          <span class="d-flex align-items-center me-2">
+            <img class="me-1" src="img/icon-star.svg" alt="" width="16" height="16">
+            <span class="movie__rating">7.7</span>
+          </span>
+          <span class="d-flex align-items-center me-2">
+            <img class="me-1" src="img/icon-calendar-event.svg" alt="" width="16" height="16">
+            <span class="movie__year">2001</span>
+          </span>
+          <span class="d-flex align-items-center ">
+            <img class="me-1" src="img/icon-clock.svg" alt="" width="16" height="16">
+            <span class="movie__duration">1 hr 20 min</span>
+          </span>
+        </div>
+        <p class="movie__categories card-text">Thriller, Comedy, Action</p>
+        <button class="d-block w-100 mt-auto btn btn-info btn-sm text-white js-more-info-button" data-bs-toggle="modal"
+          data-bs-target="#more-info-modal">More info</button>
+      </div>
+    </div>
+  </div>
+</template>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/movies.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
